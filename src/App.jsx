@@ -1,25 +1,18 @@
-// App.jsx define el router principal de la aplicación.
-// Aquí se asignan las rutas a los componentes correspondientes.
-import { BrowserRouter as Router, Routes, Route } from 'react-router' // Importa el router y los componentes necesarios para definir rutas.
-
-import Home from './pages/Home' // Página de bienvenida después del login.
-import Login from './pages/Login' // Página de inicio de sesión.
-import Products from './pages/Products' // Página de administración de productos.
+// App.jsx
+import { BrowserRouter as Router, Routes, Route } from 'react-router'
+import Home from './pages/Home'
+import Login from './pages/Login'
+import Students from './pages/Students'
 
 function App() {
   return (
-    <>
-      <Router>
-        <Routes>
-          {/* Ruta para la página de login. */}
-          <Route path="/" element={<Login />} />
-          {/* Ruta para la página principal, solo accesible después de iniciar sesión. */}
-          <Route path="/home" element={<Home />} />
-          {/* Ruta para la página de productos. */}
-          <Route path="/products" element={<Products />} />
-        </Routes>
-      </Router>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/students" element={<Students />} />
+      </Routes>
+    </Router>
   )
 }
 
