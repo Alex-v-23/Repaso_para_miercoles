@@ -1,10 +1,9 @@
-// Sidebar.jsx - Barra lateral con colores exactos
-import { Link, useLocation, useNavigate } from 'react-router'
+// Nav.jsx - Línea amarilla, letras blancas/grises
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const Sidebar = () => {
   const location = useLocation()
   const navigate = useNavigate()
-  const user = localStorage.getItem('escuela_user') || 'Administrador'
 
   const handleLogout = () => {
     localStorage.removeItem('escuela_token')
@@ -14,64 +13,43 @@ const Sidebar = () => {
   }
 
   return (
-    <aside className="fixed left-0 top-0 h-full w-64 bg-white shadow-md z-40 border-r border-gray-200">
+    <aside className="fixed left-0 top-0 h-full w-64 bg-gray-700 border-r border-gray-600">
       {/* Escuela Admin */}
-      <div className="p-5 border-b border-gray-200">
-        <h1 className="text-xl font-bold text-blue-600">Escuela Admin</h1>
-      </div>
-
-      {/* Administrador */}
-      <div className="p-4 border-b border-gray-200">
-        <div className="flex items-center gap-3">
-          <div className="bg-gray-100 rounded-full w-10 h-10 flex items-center justify-center">
-            <span className="text-gray-600 text-lg">👤</span>
-          </div>
-          <div>
-            <p className="text-sm font-semibold text-gray-800">Administrador</p>
-            <p className="text-xs text-gray-400">{user}</p>
-          </div>
-        </div>
+      <div className="p-4 border-b border-yellow-400">
+        <h1 className="text-xl font-bold text-white">Ricaldone</h1>
+        <p className="text-xs text-gray-300">Sistema de Gestión</p>
       </div>
 
       {/* Menú */}
       <nav className="py-4">
-        <ul>
-          <li>
-            <Link
-              to="/home"
-              className={`flex items-center gap-3 px-5 py-3 transition ${
-                location.pathname === '/home'
-                  ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600'
-                  : 'text-gray-700 hover:bg-gray-50'
-              }`}
-            >
-              <span>🏠</span>
-              <span>Inicio</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/students"
-              className={`flex items-center gap-3 px-5 py-3 transition ${
-                location.pathname === '/students'
-                  ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600'
-                  : 'text-gray-700 hover:bg-gray-50'
-              }`}
-            >
-              <span>👥</span>
-              <span>Estudiantes</span>
-            </Link>
-          </li>
-        </ul>
+        <Link
+          to="/home"
+          className={`flex items-center gap-3 px-5 py-2 ${
+            location.pathname === '/home'
+              ? 'bg-gray-800 text-white border-r-4 border-yellow-400'
+              : 'text-gray-200 hover:bg-gray-600'
+          }`}
+        >
+          <span>Inicio</span>
+        </Link>
+        <Link
+          to="/students"
+          className={`flex items-center gap-3 px-5 py-2 ${
+            location.pathname === '/students'
+              ? 'bg-gray-800 text-white border-r-4 border-yellow-400'
+              : 'text-gray-200 hover:bg-gray-600'
+          }`}
+        >
+          <span>Estudiantes</span>
+        </Link>
       </nav>
 
       {/* Cerrar Sesión */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200">
+      <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-yellow-400">
         <button
           onClick={handleLogout}
-          className="flex items-center gap-3 w-full px-3 py-2 text-red-600 hover:bg-red-50 rounded-lg transition"
+          className="flex items-center gap-3 w-full px-3 py-2 text-white hover:bg-gray-600 rounded transition"
         >
-          <span>🚪</span>
           <span>Cerrar Sesión</span>
         </button>
       </div>
